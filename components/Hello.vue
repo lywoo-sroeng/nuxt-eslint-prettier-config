@@ -20,7 +20,7 @@ const props = withDefaults(defineProps<Props>(), defaultValues)
 </script>
 
 <template>
-  <div>
+  <div class="mx-2 flex bg-pink-50 px-7 text-pink-500">
     {{ props }}
     <br />
     {{ defaultValues1 }}
