@@ -17,6 +17,17 @@ const defaultValues1 = {
 }
 
 const props = withDefaults(defineProps<Props>(), defaultValues)
+
+function fn1() {
+  //
+  fn2('')
+}
+
+const fn2 = (name: string) => {
+  //
+}
+
+fn1()
 </script>
 
 <template>

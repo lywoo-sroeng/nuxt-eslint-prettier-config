@@ -10,6 +10,7 @@ module.exports = {
   },
   extends: ['@nuxtjs/eslint-config-typescript', 'plugin:prettier/recommended'],
   plugins: [],
+  ignorePatterns: ['components/ui/*', 'tailwind.config.js'],
   rules: {
     'vue/multi-word-component-names': 'off',
     'vue/require-default-prop': 0,
