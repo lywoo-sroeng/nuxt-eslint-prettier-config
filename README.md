@@ -1,5 +1,3 @@
-# Notice
-This is a personal configuration that I learnt and extended from [a blog](https://dev.to/tao/adding-eslint-and-prettier-to-nuxt-3-2023-5bg) written by [Lewis Lloyd](https://dev.to/tao). For further details and configurations, please visit his page.
 # Package Installation
 ```sh
 # ESLint
@@ -10,17 +8,15 @@ npm i -D prettier eslint-config-prettier eslint-plugin-prettier
 
 # Typescript support
 npm i -D typescript @typescript-eslint/parser @nuxtjs/eslint-config-typescript
+
+#or
+npm i -D eslint prettier eslint-config-prettier eslint-plugin-prettier typescript @typescript-eslint/parser @nuxtjs/eslint-config-typescript
 ```
 # .eslintrc.cjs file configuration
 ```js
 //projectName/.eslintrc.cjs
 
 module.exports = {
-  root: true,
-  env: {
-    browser: true,
-    node: true,
-  },
   parser: 'vue-eslint-parser',
   parserOptions: {
     parser: '@typescript-eslint/parser',
@@ -32,11 +28,14 @@ module.exports = {
   ignorePatterns: ['components/ui/', 'tailwind.config.js'],
 
   rules: {
+    'no-lonely-if': 'off',
+    'comma-dangle': 'off',
+    'no-console': 'off',
+    'vue/no-v-html': 'off',
     'vue/multi-word-component-names': 'off',
-    
     'vue/require-default-prop': 0,
-
     '@typescript-eslint/consistent-type-imports': 'error',
+    'prettier/prettier': ['error', { printWidth: 95 }],
   },
 }
 ```
@@ -68,15 +67,16 @@ Modify the file "*projectName*/.prettierrc"
 ```
 # VSCode settings.json
 ```json
-"prettier.requireConfig": true,
-"editor.codeActionsOnSave": {
-  "source.fixAll.eslint": true
-},
+{
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "prettier.requireConfig": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "always"
+  }
+}
 ```
 # Nuxt Tailwind
-
-Reference: [Nuxt Tailwind](https://tailwindcss.nuxtjs.org/getting-started/setup)
-
 ```sh
 npm install -D @nuxtjs/tailwindcss
 ```
@@ -101,8 +101,6 @@ npx tailwindcss init
 @tailwind utilities;
 ```
 # Automatic Sorting Tailwind class with Prettier in Nuxt
-Reference: [Automatic Class Sorting with Prettier](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier)
-
 ```sh
 npm install -D prettier prettier-plugin-tailwindcss
 ```
@@ -113,3 +111,8 @@ Modify the file "*projectName*/.prettierrc"
   "plugins": ["prettier-plugin-tailwindcss"]
 }
 ```
+
+# References
+- https://dev.to/tao/adding-eslint-and-prettier-to-nuxt-3-2023-5bg
+- [Nuxt Tailwind](https://tailwindcss.nuxtjs.org/getting-started/setup)
+- [Automatic Class Sorting with Prettier](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier)
